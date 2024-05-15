@@ -1,0 +1,28 @@
+.navbar {
+    position: absolute;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar * {
+    color: black;
+}
+
+.left-links {
+    display: flex;
+    align-items: center;
+}
+
+.home-btn {
+    font-size: 32px;
+    margin-right: 30px;
+    margin-left: 25px;
+}
+
+.cart {
+    margin-right: 25px;
+}

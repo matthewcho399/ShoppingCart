@@ -1,0 +1,15 @@
+.shopPage {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.productsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    flex: 0 0 33.3333%;
+    color: black;
+}
