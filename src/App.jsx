@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar cart={cart}/>
+      <Navbar cartLength={cart.length}/>
       <Routes>
         <Route path="/" element={<HomePage />} errorElement={<ErrorPage />} />
         <Route

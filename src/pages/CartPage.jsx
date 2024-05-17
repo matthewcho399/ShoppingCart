@@ -59,7 +59,7 @@ const Cart = ({ cart, setCart }) => {
                   <div className="productInfo">
                     <div className="productTopLine">
                       <p style={{ fontWeight: 'bold', paddingLeft: 40 }}>{product.title}</p>
-                      <button onClick={() => handleDelete(product)}>X</button>
+                      <button onClick={() => handleDelete(product)} style={{ maxHeight: 40 }}>X</button>
                     </div>
                     <p>{USDollar.format(product.price)}</p>
                     <p>Quantity: {product.quantity}</p>
