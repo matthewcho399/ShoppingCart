@@ -1,41 +1,11 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/ShopPage.css"
 
-const ShopPage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
+const ShopPage = ({ products }) => {
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch("https://fakestoreapi.com/products", {
-          mode: "cors",
-        });
-        const data = await response.json();
-        console.log(data);
-        data.forEach((p) => {
-          setProducts((oldProducts) => [...oldProducts, p]);
-        });
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-    return () => setProducts(() => []);
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="shopPage">
@@ -56,7 +26,6 @@ const ShopPage = () => {
           );
         })}
       </div>
-
     </div>
   );
 };

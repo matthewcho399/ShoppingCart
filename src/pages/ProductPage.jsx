@@ -1,42 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "../styles/ProductPage.css"
 
-const ProductPage = ({ cart, setCart }) => {
+const ProductPage = ({ products, cart, setCart }) => {
   const [quantity, setQuantity] = useState(1);
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(false);
   const { productId } = useParams();
   const navigate = useNavigate();
+  const product = products.find(i => i.id === parseInt(productId));
 
   const USDollar = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(
-          `https://fakestoreapi.com/products/${productId}`
-        );
-        const data = await response.json();
-        setProduct(data);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-    return () => setProduct(() => null);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   const handleAddToCart = () => {
     let productToAdd = product;
